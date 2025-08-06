@@ -1,0 +1,30 @@
+// Database connection configuration
+export const dbConfig = {
+  MONGODB_HOST: process.env.MONGODB_HOST!,
+  MONGODB_USERNAME: process.env.MONGODB_USERNAME,
+  MONGODB_PASSWORD: process.env.MONGODB_PASSWORD,
+  MONGODB_DATABASE: 'tutorial',
+  MONGODB_COLLECTION: 'users'
+}
+
+// Atlas API configuration
+const ATLAS_API_BASE_URL = 'https://cloud.mongodb.com/api/atlas/v1.0'
+const ATLAS_PROJECT_ID = process.env.MONGODB_ATLAS_PROJECT_ID
+const ATLAS_CLUSTER_NAME = process.env.MONGODB_ATLAS_CLUSTER
+const ATLAS_CLUSTER_API_URL = `${ATLAS_API_BASE_URL}/groups/${ATLAS_PROJECT_ID}/clusters/${ATLAS_CLUSTER_NAME}`
+const ATLAS_SEARCH_INDEX_API_URL = `${ATLAS_CLUSTER_API_URL}/fts/indexes`
+
+const ATLAS_API_PUBLIC_KEY = process.env.MONGODB_ATLAS_PUBLIC_KEY
+const ATLAS_API_PRIVATE_KEY = process.env.MONGODB_ATLAS_PRIVATE_KEY
+const DIGEST_AUTH = `${ATLAS_API_PUBLIC_KEY}:${ATLAS_API_PRIVATE_KEY}`
+
+export const atlasConfig = {
+  ATLAS_API_BASE_URL,
+  ATLAS_PROJECT_ID,
+  ATLAS_CLUSTER_NAME,
+  ATLAS_CLUSTER_API_URL,
+  ATLAS_SEARCH_INDEX_API_URL,
+  ATLAS_API_PUBLIC_KEY,
+  ATLAS_API_PRIVATE_KEY,
+  DIGEST_AUTH
+} 
