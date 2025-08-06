@@ -1,10 +1,10 @@
 import { Request, Response } from 'express'
-import { UserService } from '../services/UserService'
+import { UserCrudService } from '../services/UserCrudService'
 
 export class UserCrudController {
-  private userService: UserService
+  private userService: UserCrudService
 
-  constructor(userService: UserService) {
+  constructor(userService: UserCrudService) {
     this.userService = userService
   }
 

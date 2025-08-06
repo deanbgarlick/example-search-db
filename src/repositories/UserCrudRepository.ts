@@ -1,7 +1,7 @@
 import { Collection } from 'mongodb'
 import { User } from '../models/User'
 
-export interface UserRepository {
+export interface UserCrudRepository {
   create(user: User): Promise<User>
   findById(userId: string): Promise<User | null>
   findAll(skip: number, limit: number): Promise<[User[], number]>
@@ -9,7 +9,7 @@ export interface UserRepository {
   delete(userId: string): Promise<boolean>
 }
 
-export class MongoUserRepository implements UserRepository {
+export class MongoUserCrudRepository implements UserCrudRepository {
   private collection: Collection<User>
 
   constructor(collection: Collection<User>) {

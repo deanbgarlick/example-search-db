@@ -3,9 +3,9 @@ import cors from 'cors'
 import { mongoClient } from './mongoClient'
 import { UserSearchController } from './controllers/UserSearchController'
 import { UserCrudController } from './controllers/UserCrudController'
-import { MongoUserRepository } from './repositories/UserRepository'
+import { MongoUserCrudRepository } from './repositories/UserCrudRepository'
 import { MongoUserSearchRepository } from './repositories/UserSearchRepository'
-import { UserService } from './services/UserService'
+import { UserCrudService } from './services/UserCrudService'
 import { UserSearchService } from './services/UserSearchService'
 import { ensureSearchIndexes } from './services/searchIndex'
 import { dbConfig } from './config/mongodb'
@@ -21,9 +21,9 @@ const db = mongoClient.db(dbConfig.MONGODB_DATABASE)
 const userCollection = db.collection<User>(dbConfig.MONGODB_COLLECTION)
 
 // CRUD dependencies
-const userRepository = new MongoUserRepository(userCollection)
-const userService = new UserService(userRepository)
-const userCrudController = new UserCrudController(userService)
+const userCrudRepository = new MongoUserCrudRepository(userCollection)
+const userCrudService = new UserCrudService(userCrudRepository)
+const userCrudController = new UserCrudController(userCrudService)
 
 // Search dependencies
 const userSearchRepository = new MongoUserSearchRepository(userCollection)

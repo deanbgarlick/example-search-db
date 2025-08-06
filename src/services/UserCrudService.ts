@@ -1,10 +1,10 @@
 import { User } from '../models/User'
-import { UserRepository } from '../repositories/UserRepository'
+import { UserCrudRepository } from '../repositories/UserCrudRepository'
 
-export class UserService {
-  private userRepository: UserRepository
+export class UserCrudService {
+  private userRepository: UserCrudRepository
 
-  constructor(userRepository: UserRepository) {
+  constructor(userRepository: UserCrudRepository) {
     this.userRepository = userRepository
   }
 
