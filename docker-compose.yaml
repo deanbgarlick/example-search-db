@@ -4,14 +4,12 @@ services:
     image: node:18
     container_name: mongo_search_atlas_api
     volumes:
-      - ./atlas-api.ts:/atlas-api.ts
-      - ./util.ts:/util.ts
-      - ./node_modules:/node_modules
-      - ./tsconfig.json:/tsconfig.json
-      - ./package.json:/package.json
+      - ./src:/app/src
+      - ./node_modules:/app/node_modules
+      - ./tsconfig.json:/app/tsconfig.json
+      - ./package.json:/app/package.json
+    working_dir: /app
     ports:
       - 3001:3001
-    command: npx ts-node atlas-api.ts
-    env_file: .env.atlas
-    depends_on:
-      - mongodb
+    command: npx ts-node src/server.ts
+    env_file: .env
